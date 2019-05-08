@@ -1,0 +1,50 @@
+http://localhost:3000/api/product
+
+###
+http://localhost:3000/api/product/mine
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvaWFuZSIsInNlbGxlciI6dHJ1ZSwiaWF0IjoxNTU3MDU4MTQxLCJleHAiOjE1NTcxMDEzNDF9.bNe6udA93HayuWw4wqu6KV38-fHOlBkKWjDccDNztTk
+
+###
+
+GET http://localhost:3000/api/product/ad1bd75f-d668-4a8b-a0ad-2fdc98f9cbaa
+
+###
+
+GET http://localhost:3000/api/seller/5cc7a9dad66c1229b10fbc84
+
+
+###
+
+POST http://localhost:3000/api/product HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvaWFuZSIsInNlbGxlciI6dHJ1ZSwiaWF0IjoxNTU3MDU4MTQxLCJleHAiOjE1NTcxMDEzNDF9.bNe6udA93HayuWw4wqu6KV38-fHOlBkKWjDccDNztTk
+content-type: application/json
+
+{
+    "title": "a",
+    "image": "aaaa",
+    "description": "asdasdasda",
+    "price": 3.14
+}
+
+###
+
+PUT http://localhost:3000/article/0f4500dd-6e02-445a-a64c-2d5b7fb5eba2 HTTP/1.1
+content-type: application/json
+
+{
+    "article": "Nest Updated"
+}
+
+###
+
+DELETE http://localhost:3000/api/product/5cced29341e1c02156ba0e5c
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvaWFuZSIsInNlbGxlciI6dHJ1ZSwiaWF0IjoxNTU3MDYyMDAxLCJleHAiOjE1NTcxMDUyMDF9.dS2ESfH28ws3h4P778TIeoIck9-n1jW1vG_Mczu2vWs
+
+###
+
+POST http://localhost:3000/article HTTP/1.1
+content-type: application/json
+
+{
+    "article": "Nest2"
+}

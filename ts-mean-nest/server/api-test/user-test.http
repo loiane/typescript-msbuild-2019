@@ -1,0 +1,33 @@
+http://localhost:3000/auth/users
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxvaWFuZSIsInNlbGxlciI6dHJ1ZSwiaWF0IjoxNTU2NTg5MDgzLCJleHAiOjE1NTY2MzIyODN9.EDLQTxhbbt21x-xJMmDz5B41xcb8xM866PlBySCvxPw
+
+###
+
+POST http://localhost:3000/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "loiane",
+    "password": "loiane",
+    "seller": true
+}
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "loiane",
+    "password": "loiane"
+}
+
+###
+
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "loiane",
+    "password": "loiane111"
+}

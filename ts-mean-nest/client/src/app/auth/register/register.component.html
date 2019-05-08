@@ -1,0 +1,52 @@
+<div class="session">
+  <div class="session-content">
+    <div class="session-wrapper">
+      <mat-card>
+        <mat-card-title class="text-xs-center pb-1">Register</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="form">
+            <div fxLayout="column" fxLayoutAlign="space-around">
+              <div class="pb-1" *ngIf="error">
+                  {{ error }}
+              </div>
+              <div class="pb-1">
+                <mat-form-field class="full-width" appearance="outline" label="Email">
+                  <input matInput placeholder="Email" type="email" formControlName="email" [errorStateMatcher]="matcher">
+                  <mat-icon matSuffix color="primary">email</mat-icon>
+                  <mat-error *ngIf="isFieldRequired('email')">
+                    Please inform your email.
+                  </mat-error>
+                  <mat-error *ngIf="isEmailValid('email')">
+                    Please inform a valid email.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="pb-1">
+                <mat-form-field class="full-width" appearance="outline" label="Password">
+                  <input matInput type="password" placeholder="Password" #pass formControlName="password" [errorStateMatcher]="matcher">
+                  <mat-icon matSuffix color="primary">lock</mat-icon>
+                  <mat-hint align="end" aria-live="polite">
+                    {{ pass.value.length}} / 25
+                  </mat-hint>
+                  <mat-error *ngIf="isFieldRequired('password')">
+                    Please inform your password.
+                  </mat-error>
+                  <mat-error *ngIf="form.get('password').hasError('minlength')">
+                    Password needs at least 6 characters.
+                  </mat-error>
+                  <mat-error *ngIf="form.get('password').hasError('maxlength')">
+                    Password cannot exceed 25 characters.
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <button mat-raised-button color="primary" class="btn-block" class="bold" (click)="onSubmit()">Create your account</button>
+            </div>
+            <div class="pt-1 pb-1 text-xs-center">
+              <a [routerLink]="['/session/signin']" class="bold">Login</a>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

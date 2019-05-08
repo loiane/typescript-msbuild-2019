@@ -1,10 +1,17 @@
-let hello = 'Build 2019';
+var hello = 'Build 2019';
 hello = 3;
 console.log(hello);
-
-class Attendee {
-    constructor(name, city) {
-        this._name = name;
-        this._city = city;
+var Attendee = /** @class */ (function () {
+    /**
+     *
+     * @param {String} name
+     * @param {String} city
+     */
+    function Attendee(name, country) {
+        this.name = name;
+        this.country = country;
     }
-}
+    return Attendee;
+}());
+var att = new Attendee('Loiane', 'Brazil');
+//att.na = 'sdfsdf';
