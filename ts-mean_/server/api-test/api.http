@@ -1,0 +1,32 @@
+http://localhost:3000/api/attendees
+
+###
+
+POST http://localhost:3000/api/attendees HTTP/1.1
+content-type: application/json
+
+{
+    "name": "aaaaa",
+    "email": "aaa@email.com",
+    "sessions": [{
+        "_id": "5ba7d93249e2b84b4b817213",
+        "name": "THR1066: Visual Studio Code tips and tricks for JavaScript developers"
+    }]
+}
+
+###
+
+PUT http://localhost:3000/api/attendees/5cc08c1658ed74563b00e4d1 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Updated",
+    "email": "aaa@email.com",
+    "sessions": [{
+        "_id": "5ba7d93249e2b84b4b817213",
+        "name": "THR1066: Visual Studio Code tips and tricks for JavaScript developers"
+    }]
+}
+
+###
+DELETE http://localhost:3000/api/attendees/5cc08c1658ed74563b00e4d1

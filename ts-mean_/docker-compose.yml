@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  ts-mean:
+    image: build2019-tsnode
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 7626:3000

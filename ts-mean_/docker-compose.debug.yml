@@ -1,0 +1,21 @@
+version: '2.1'
+
+services:
+  build2019-tsnode-debug:
+    image: build2019-tsnode-debug
+    build: .
+    environment:
+      NODE_ENV: debug
+      MONGO_URL: mongodb://mongo:27018/build2019
+    ports:
+      - 3001:3000
+      - 9229:9229
+    command: node --inspect=0.0.0.0:9229 index
+    links:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27018:27017"      

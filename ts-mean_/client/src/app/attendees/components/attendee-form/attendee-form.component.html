@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-toolbar color="primary">Attendee Details</mat-toolbar>
+
+  <mat-card-content>
+    <form class="example-form" [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          #name
+          [errorStateMatcher]="matcher"
+        />
+        <mat-hint align="end">{{ name.value.length }} / 200</mat-hint>
+        <mat-error *ngIf="isFieldRequired('name')"> Name is required </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher" />
+        <mat-error *ngIf="isFieldRequired('email')"> Email is required </mat-error>
+        <mat-error *ngIf="isEmailValid('email')"> Please enter a valid email address </mat-error>
+      </mat-form-field>
+
+      <mat-toolbar>
+        <span [ngClass]="getFormArrayClass('sessions')">Sessions</span>
+        <div class="fill-remaining-space"></div>
+        <button mat-icon-button color="accent" (click)="addSession()">
+          <mat-icon aria-label="Add New Phone">add</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <mat-error *ngIf="isFormArrayValid('sessions')" class="form-array-error">
+        Select at least one session.
+      </mat-error>
+
+      <table
+        class="example-full-width"
+        cellspacing="0"
+        formArrayName="sessions"
+        *ngFor="let session of getSessionFormArray(); let i = index"
+      >
+        <tr [formGroupName]="i">
+          <td style="width:100%">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                placeholder="Sesion"
+                formControlName="name"
+                [matAutocomplete]="auto"
+              />
+              <mat-error *ngIf="isFieldRequiredArray('sessions', 'name', i)">
+                Please select a session.
+              </mat-error>
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of (sessionList$ | async)" [value]="option.name">{{
+                  option.name
+                }}</mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </td>
+          <td>
+            <button mat-icon-button color="warn">
+              <mat-icon aria-label="Remove Phone">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+    <button mat-raised-button (click)="onCancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
